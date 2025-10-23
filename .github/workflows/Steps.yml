@@ -1,0 +1,26 @@
+name: Steps
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create directory "testmachine"
+        run: mkdir testmachine
+
+      - name: Run uname -a and save to output.txt
+        run: uname -a > testmachine/output.txt
+
+      - name: Verify contents of output.txt
+        run: cat testmachine/output.txt
+
+      - name: Verify directory structure and contents
+        run: ls -alhR
