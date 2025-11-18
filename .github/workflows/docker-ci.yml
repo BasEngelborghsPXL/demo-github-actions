@@ -14,7 +14,6 @@ jobs:
         with :
           repository: PXL-2TIN-DevOps-Resources/calculator-app-finished
 
-      - name: Setup Node.js environment
       - uses: actions/setup-node@v4
         with:
           version: "18"
