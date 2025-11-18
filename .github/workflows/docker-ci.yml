@@ -13,12 +13,12 @@ jobs:
       - uses: actions/checkout@v4
         with :
           repository: PXL-2TIN-DevOps-Resources/calculator-app-finished
-          path: app
 
-      - name: Install Nodejs
-        run: |
-          sudo apt install -y nodejs
-
+      - name: Setup Node.js environment
+      - uses: actions/setup-node@v4
+        with:
+          version: "18"
+  
       - name: Install dependancies
         run: |
           sudo apt install -y npm
@@ -26,11 +26,11 @@ jobs:
           
       - name: Test
         run: |
-          sudo npm test --coverage
+          sudo npm test -- --coverage
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
           name: app-package
-          path: app/coverage/
+          path: coverage/
           
