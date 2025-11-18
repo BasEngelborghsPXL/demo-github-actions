@@ -14,9 +14,9 @@ jobs:
         with :
           repository: PXL-2TIN-DevOps-Resources/calculator-app-finished
 
-      - name: Install Node.js
+      - name: Install Nodejs
         run: |
-          sudo apt install -y node.js
+          sudo apt install -y nodejs
 
       - name: Install dependancies
         run: |
@@ -28,7 +28,7 @@ jobs:
           sudo npm test --coverage
 
       - name: Archive artifacts
-        uses: actions/upload-artifacts@v4
+        uses: actions/upload-artifact@v4
         with:
           name: app-package
           path: coverage/
