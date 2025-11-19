@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5.0.1
         with:
-          repository: PXL-2TIN-DevOps-Resources/calculator-app-finished
+          repository: BasEngelborghsPXL/calculator-app-finished
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js environment
@@ -38,7 +38,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5.0.1
         with:
-          repository: PXL-2TIN-DevOps-Resources/calculator-app-finished
+          repository: BasEngelborghsPXL/calculator-app-finished
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js environment
