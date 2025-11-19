@@ -1,0 +1,59 @@
+name: Complete CI workflow
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5.0.1
+        with:
+          repository: PXL-2TIN-DevOps-Resources/calculator-app-finished
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          
+      - name: install npm
+        run: npm install
+        
+      - name: Run unit tests with coverage
+        run: npm test -- --coverage
+        
+      - name: Code Coverage Report
+        uses: mridang/action-test-reporter@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coverage-file: calculator-app/coverage/clover.xml
+          working-directory: ./calculator-app
+          
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5.0.1
+        with:
+          repository: PXL-2TIN-DevOps-Resources/calculator-app-finished
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          
+      - name: install npm
+        run: npm install 
+
+      - name: ESLint
+        run: npm run lint
+
+      - name: Prettier format check
+        run: npm run format:check
+
+      - name: Security audit
+        run: npm audit --audit-level=high
