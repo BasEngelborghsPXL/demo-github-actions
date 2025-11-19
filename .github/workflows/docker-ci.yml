@@ -41,7 +41,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5.9.0
         with: 
-          images: ${{vars.DOCKERHUB_USERNAME}}/app
+          images: ${{secrets.DOCKERHUB_USERNAME}}/app
 
       - name: Docker Login
         uses: docker/login-action@v3.6.0
