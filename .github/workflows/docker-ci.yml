@@ -16,16 +16,14 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          version: "18"
+          node-version: "18"
   
       - name: Install dependancies
-        run: |
-          sudo apt install -y npm
-          sudo npm install
+        run: npm install
           
       - name: Test
         run: |
-          sudo npm test --coverage
+          sudo npm test -- --coverage
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
