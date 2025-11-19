@@ -13,24 +13,24 @@ jobs:
         with:
           repository: PXL-2TIN-DevOps-Resources/calculator-app-finished
           token: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          
+
       - name: install npm
         run: npm install
-        
+
       - name: Run unit tests with coverage
         run: npm test -- --coverage
-        
+
       - name: Code Coverage Report
         uses: mridang/action-test-reporter@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           coverage-file: coverage/clover.xml
-          
+
   code-quality:
     runs-on: ubuntu-latest
     steps:
@@ -39,14 +39,14 @@ jobs:
         with:
           repository: PXL-2TIN-DevOps-Resources/calculator-app-finished
           token: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          
+
       - name: install npm
-        run: npm install 
+        run: npm install
 
       - name: ESLint
         run: npm run lint

@@ -1,24 +1,24 @@
 name: conditional
-on: 
- workflow_dispatch:
-  inputs:
-   environment:
-    options:
-    - development
-    - staging
-    - production
-    
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        options:
+          - development
+          - staging
+          - production
+
 jobs:
- conditional:
-  runs-on: ubuntu-latest
-  steps:
-   - name: production
-     if: github.event.inputs.environment == "production"
-     run: echo "Deploying to production"
+  conditional:
+    runs-on: ubuntu-latest
+    steps:
+      - name: production
+        if: github.event.inputs.environment == "production"
+        run: echo "Deploying to production"
 
-   - name: testing
-     if: github.event.inputs.environment == "development" || github.event.inputs.environment == "staging"
-     run: echo "Running in test mode"
+      - name: testing
+        if: github.event.inputs.environment == "development" || github.event.inputs.environment == "staging"
+        run: echo "Running in test mode"
 
-   - name: rest
-     run: echo "gekozen environment:" ${{ github.event.inputs.environment }}
+      - name: rest
+        run: echo "gekozen environment:" ${{ github.event.inputs.environment }}
