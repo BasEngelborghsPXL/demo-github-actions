@@ -30,7 +30,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           coverage-file: calculator-app/coverage/clover.xml
-          working-directory: ./calculator-app
           
   code-quality:
     runs-on: ubuntu-latest
